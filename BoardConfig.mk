@@ -243,3 +243,6 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/rosy/BoardConfigVendor.mk
+
+# Halium requires BOARD_BUILD_SYSTEM_ROOT_IMAGE for non-Trebble devices
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
