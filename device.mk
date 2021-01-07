@@ -17,6 +17,9 @@
 # Inherit proprietary vendor files
 $(call inherit-product, vendor/xiaomi/rosy/rosy-vendor.mk)
 
+# Inherit fonts
+$(call inherit-product-if-exists, frameworks/base/data/fonts/fonts.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
@@ -272,7 +275,11 @@ PRODUCT_PACKAGES += \
     libOmxSwVencHevc \
     libOmxVdec \
     libOmxVenc \
-    libstagefrighthw
+    libstagefrighthw \
+    android.hardware.media.omx@1.0-service \
+    android.hardware.media.omx@1.0-impl \
+    android.hardware.media.omx@1.0 \
+    crash_dump.policy
 
 # Perf
 PRODUCT_COPY_FILES += \
@@ -376,7 +383,8 @@ PRODUCT_PACKAGES += \
 # Vibrator
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service
+    android.hardware.vibrator@1.0-service \
+    vibrator.default
 
 # Whitelisted app
 PRODUCT_COPY_FILES += \
@@ -397,6 +405,22 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+# Missing dependencies needed in Halium
+PRODUCT_PACKAGES += \
+    libandroid \
+    libandroid_runtime \
+    libnetutils \
+    libril \
+    libprotobuf-cpp-full \
+    android.hardware.radio.deprecated@1.0-impl \
+    android.hardware.radio.deprecated@1.0-service \
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service \
+    minisfservice \
+    libdrm \
+    libion \
+    vendor.display.config@1.7
+    
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/hostapd.accept:$(TARGET_COPY_OUT_SYSTEM)/etc/hostapd/hostapd.accept \
     $(LOCAL_PATH)/wifi/hostapd.deny:$(TARGET_COPY_OUT_SYSTEM)/etc/hostapd/hostapd.deny \
