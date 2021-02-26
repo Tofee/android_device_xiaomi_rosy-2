@@ -128,9 +128,9 @@ PRODUCT_PACKAGES += \
     libmm-qcamera
 
 # ConsumerIr
-PRODUCT_PACKAGES += \
-    android.hardware.ir@1.0-impl \
-    android.hardware.ir@1.0-service
+#PRODUCT_PACKAGES += \
+#    android.hardware.ir@1.0-impl \
+#    android.hardware.ir@1.0-service
 
 # Display
 PRODUCT_PACKAGES += \
